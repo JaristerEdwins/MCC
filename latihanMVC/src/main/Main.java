@@ -19,8 +19,8 @@ public class Main {
     public static void main(String[] args) {
         DaoProvince daoprovince = new DaoProvince();
         Province province = new Province();
-        province.setProvinceId(9);
-        province.setProvinceName("Sulawesi Utara");
+        province.setProvinceId(8);
+        province.setProvinceName("Sumatera Utara");
 //        if(daoprovince.insert(province)){
 //            System.out.println("Data berhasil diinput");
 //        }else{
@@ -30,9 +30,9 @@ public class Main {
 
 //        List<Province> provinces = daoprovince.getAll();
 //        provinces = daoprovince.getAll();
-        for (Province p : daoprovince.getAll()) {
-            System.out.println(p.getProvinceId());
-            System.out.println(p.getProvinceName());
+        for (Province a : daoprovince.getAll()) {
+            System.out.println(a.getProvinceId());
+            System.out.println(a.getProvinceName());
         }
     }
 
