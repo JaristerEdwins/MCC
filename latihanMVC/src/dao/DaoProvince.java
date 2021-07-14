@@ -28,7 +28,8 @@ public class DaoProvince {
     public boolean insert(Province province) {
         PreparedStatement statement;
         try {
-            statement = connection.prepareStatement("INSERT INTO province (province_id, province_name) VALUES (?, ?);");
+            statement = connection.prepareStatement(
+                    "INSERT INTO province (province_id, province_name) VALUES (?, ?);");
             statement.setInt(1, province.getProvinceId()); //set
             statement.setString(2, province.getProvinceName()); //set
             statement.executeUpdate(); //execute
@@ -40,6 +41,35 @@ public class DaoProvince {
         }
     }
 
+    public boolean update(Province province) {
+        PreparedStatement statement;
+        try {
+            statement = connection.prepareStatement("UPDATE province SET province_name=? WHERE province_id=?;");
+            statement.setString(1, province.getProvinceName()); //set
+            statement.setInt(2, province.getProvinceId()); //set
+            statement.executeUpdate(); //execute
+            statement.close();
+            return true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean delete(Province province) {
+        PreparedStatement statement;
+        try {
+            statement = connection.prepareStatement("DELETE FROM province WHERE province_id=?;");
+            statement.setInt(1, province.getProvinceId()); //set
+            statement.executeUpdate(); //execute
+            statement.close();
+            return true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    
     public List<Province> getAll() {
         List<Province> listProvince = new ArrayList<Province>();
         try {
